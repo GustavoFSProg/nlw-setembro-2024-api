@@ -3,7 +3,7 @@ import fastify from 'fastify'
 const app = fastify()
 
 app.listen({ port: 3000 }).then(() => {
-  console.log('Server Running!!')
+  console.log('Server Running HAHA!!')
 })
 
 export default app
