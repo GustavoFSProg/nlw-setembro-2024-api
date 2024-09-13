@@ -15,6 +15,13 @@
       "when": 1726229955553,
       "tag": "0001_round_jack_power",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1726233233561,
+      "tag": "0002_wise_dust",
+      "breakpoints": true
     }
   ]
 }

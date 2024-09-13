@@ -2,8 +2,10 @@ import fastify from 'fastify'
 
 const app = fastify()
 
-app.listen({ port: 3000 }).then(() => {
-  console.log('Server Running HAHA!!')
+const { PORT } = process.env
+
+app.listen({ port: String(`${PORT}`) }).then(() => {
+  console.log(` 💪 Server Running: ${PORT}!!`)
 })
 
 export default app
