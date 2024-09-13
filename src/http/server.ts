@@ -7,6 +7,7 @@ import {
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import fastifyCors from '@fastify/cors'
+import { getWeekPendingGoals } from '../functions/get-week-pending-goals'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -41,6 +42,12 @@ app.post(
 app.get('/get-goals', async (request, response) => {
   const { result } = await getGoals()
   return response.status(201).send({ msg: result })
+})
+
+app.get('/pending-goals', async () => {
+  const { pendingGoals } = await getWeekPendingGoals()
+
+  return { pendingGoals }
 })
 
 app.listen({ port: String(`${PORT}`) }).then(() => {
