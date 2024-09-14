@@ -9,6 +9,11 @@ import {
 import fastifyCors from '@fastify/cors'
 import { getWeekPendingGoals } from '../functions/get-week-pending-goals'
 import { createGoalCompletion } from '../functions/create-goal-completion'
+import { createGoalRoute } from './routes/create-goal'
+import { createGoalCompletionRoute } from './routes/create-goal-completion'
+import { getWeekPendingGoalsRoute } from './routes/get-week-pending-goals'
+import { viewGoals } from './routes/get-goals'
+import { getWeekSummaryRoute } from './routes/get-week-summary'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -19,56 +24,16 @@ app.setSerializerCompiler(serializerCompiler)
 
 const { PORT } = process.env
 
-app.post(
-  '/goals',
-  {
-    schema: {
-      body: z.object({
-        title: z.string(),
-        desiredWeeklyFrequency: z.number().int().min(1).max(7),
-      }),
-    },
-  },
-  async (request, response) => {
-    const { title, desiredWeeklyFrequency } = request.body
+app.register(createGoalRoute)
+app.register(createGoalCompletionRoute)
+app.register(getWeekPendingGoalsRoute)
+app.register(viewGoals)
+app.register(getWeekSummaryRoute)
 
-    const { goal } = await createGoal({
-      title,
-      desiredWeeklyFrequency,
-    })
-    return response.status(201).send({ msg: goal })
-  }
-)
-
-app.post(
-  '/completions',
-  {
-    schema: {
-      body: z.object({
-        goalId: z.string(),
-      }),
-    },
-  },
-  async (request, response) => {
-    const { goalId } = request.body
-
-    const result = await createGoalCompletion({
-      goalId,
-    })
-    return response.status(201).send({ msg: result })
-  }
-)
-
-app.get('/get-goals', async (request, response) => {
-  const { result } = await getGoals()
-  return response.status(201).send({ msg: result })
-})
-
-app.get('/pending-goals', async () => {
-  const { pendingGoals } = await getWeekPendingGoals()
-
-  return { pendingGoals }
-})
+// app.get('/get-goals', async (request, response) => {
+//   const { result } = await getGoals()
+//   return response.status(201).send({ msg: result })
+// })
 
 app.listen({ port: String(`${PORT}`) }).then(() => {
   console.log(` 💪 Server Running: ${PORT}!!`)
