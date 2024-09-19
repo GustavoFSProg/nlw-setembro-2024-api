@@ -10,11 +10,13 @@ import { createGoalCompletionRoute } from './http/routes/create-goal-completion'
 import { getWeekSummaryRoute } from './http/routes/get-week-summary'
 import { getWeekPendingGoalsRoute } from './http/routes/get-week-pending-goals'
 import { viewGoals } from './http/routes/get-goals'
-import { localUrl } from './http/routes/local-url'
+import dotenv from 'dotenv'
 
-const { PORT } = process.env
+dotenv.config()
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
+
+const { PORT } = process.env
 
 app.register(fastifyCors, { origin: '*' })
 
