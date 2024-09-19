@@ -10,6 +10,7 @@ import { createGoalCompletionRoute } from './http/routes/create-goal-completion'
 import { getWeekSummaryRoute } from './http/routes/get-week-summary'
 import { getWeekPendingGoalsRoute } from './http/routes/get-week-pending-goals'
 import { viewGoals } from './http/routes/get-goals'
+import { localUrl } from './http/routes/local-url'
 
 const { PORT } = process.env
 
@@ -17,6 +18,9 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, { origin: '*' })
 
+app.get('/', (request, response) => {
+  return response.status(200).send({ msg: 'Api Running Fine!!' })
+})
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 

@@ -17,6 +17,9 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, { origin: '*' })
 
+app.get('/', (request, response) => {
+  return response.status(200).send({ msg: 'Api Running Fine!!' })
+})
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
