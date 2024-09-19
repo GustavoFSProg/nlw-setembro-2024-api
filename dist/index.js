@@ -16,7 +16,9 @@ _dotenv2.default.config()
 
 const app = _fastify2.default.call(void 0, ).withTypeProvider()
 
-const { PORT } = process.env
+const { PORT, DATABASE_URL } = process.env
+
+// console.log(DATABASE_URL)
 
 app.register(_cors2.default, { origin: '*' })
 

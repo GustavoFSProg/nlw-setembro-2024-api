@@ -16,7 +16,9 @@ dotenv.config()
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
-const { PORT } = process.env
+const { PORT, DATABASE_URL } = process.env
+
+// console.log(DATABASE_URL)
 
 app.register(fastifyCors, { origin: '*' })
 
