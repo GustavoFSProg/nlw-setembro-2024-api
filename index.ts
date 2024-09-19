@@ -10,11 +10,6 @@ import { createGoalCompletionRoute } from './src/http/routes/create-goal-complet
 import { getWeekSummaryRoute } from './src/http/routes/get-week-summary'
 import { getWeekPendingGoalsRoute } from './src/http/routes/get-week-pending-goals'
 import { viewGoals } from './src/http/routes/get-goals'
-// import { createGoalRoute } from './routes/create-goal'
-// import { createGoalCompletionRoute } from './routes/create-goal-completion'
-// import { getWeekSummaryRoute } from './routes/get-week-summary'
-// import { getWeekPendingGoalsRoute } from './routes/get-week-pending-goals'
-// import { viewGoals } from './routes/get-goals'
 
 const { PORT } = process.env
 

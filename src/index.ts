@@ -5,11 +5,11 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { createGoalRoute } from './routes/create-goal'
-import { createGoalCompletionRoute } from './routes/create-goal-completion'
-import { getWeekSummaryRoute } from './routes/get-week-summary'
-import { getWeekPendingGoalsRoute } from './routes/get-week-pending-goals'
-import { viewGoals } from './routes/get-goals'
+import { createGoalRoute } from './http/routes/create-goal'
+import { createGoalCompletionRoute } from './http/routes/create-goal-completion'
+import { getWeekSummaryRoute } from './http/routes/get-week-summary'
+import { getWeekPendingGoalsRoute } from './http/routes/get-week-pending-goals'
+import { viewGoals } from './http/routes/get-goals'
 
 const { PORT } = process.env
 

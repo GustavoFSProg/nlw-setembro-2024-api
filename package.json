@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file .env  ./src/http/server.ts",
-    "seed": "tsx --env-file .env ./src/db/seed.ts"
+    "dev": "tsx watch --env-file .env  ./src/index.ts",
+    "seed": "tsx --env-file .env ./src/db/seed.ts",
+    "build": "sucrase --env-file .env ./src -d ./dist --transforms typescript,imports",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +28,7 @@
     "fastify": "^4.28.1",
     "fastify-type-provider-zod": "^2.0.0",
     "postgres": "^3.4.4",
+    "sucrase": "^3.35.0",
     "zod": "^3.23.8"
   }
 }
