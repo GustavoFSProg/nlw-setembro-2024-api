@@ -14,4 +14,12 @@
       "dest": "index.ts"
     }
   ]
+  
+  {
+    "functions": {
+      "api/users/**/*.js": {
+        "maxDuration": 30
+      }
+    }
+  }
 }
