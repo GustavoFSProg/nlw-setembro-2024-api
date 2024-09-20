@@ -36,8 +36,7 @@ app.register(getWeekSummaryRoute)
 app.register(getWeekPendingGoalsRoute)
 app.register(viewGoals)
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-app.listen(PORT).then(() => {
+app.listen(PORT as string).then(() => {
   console.log(`💪 HTTP server running!: ${PORT}`)
 })
 

@@ -5,5 +5,5 @@ import * as schema from './schema'
 
 const { DATABASE_URL } = process.env
 
-export const client = postgres(DATABASE_URL)
+export const client = postgres(DATABASE_URL as string)
 export const db = drizzle(client, { schema })
