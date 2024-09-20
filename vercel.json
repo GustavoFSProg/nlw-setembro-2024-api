@@ -2,6 +2,11 @@
   "name": "teste",
   "version": 2,
   "public": true,
+  "functions": {
+    "api/users/**/*.js": {
+      "maxDuration": 30
+    }
+  },
   "builds": [
     {
       "src": "index.ts",
@@ -14,12 +19,4 @@
       "dest": "index.ts"
     }
   ]
-  
-  {
-    "functions": {
-      "api/users/**/*.js": {
-        "maxDuration": 30
-      }
-    }
-  }
 }
