@@ -11,12 +11,13 @@ import { getWeekSummaryRoute } from './http/routes/get-week-summary'
 import { getWeekPendingGoalsRoute } from './http/routes/get-week-pending-goals'
 import { viewGoals } from './http/routes/get-goals'
 import dotenv from 'dotenv'
+import { string } from 'zod'
 
 dotenv.config()
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
-const { PORT, DATABASE_URL } = process.env
+const { PORT } = process.env
 
 // console.log(DATABASE_URL)
 
@@ -34,7 +35,7 @@ app.register(getWeekSummaryRoute)
 app.register(getWeekPendingGoalsRoute)
 app.register(viewGoals)
 
-app.listen({ port: PORT }).then(() => {
+app.listen<any>(PORT).then(() => {
   console.log(`💪 HTTP server running!: ${PORT}`)
 })
 

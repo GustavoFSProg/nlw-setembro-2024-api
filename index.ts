@@ -5,18 +5,21 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { createGoalRoute } from './src/http/routes/create-goal'
-import { createGoalCompletionRoute } from './src/http/routes/create-goal-completion'
-import { getWeekSummaryRoute } from './src/http/routes/get-week-summary'
-import { getWeekPendingGoalsRoute } from './src/http/routes/get-week-pending-goals'
-import { viewGoals } from './src/http/routes/get-goals'
+import { createGoalRoute } from './http/routes/create-goal'
+import { createGoalCompletionRoute } from './http/routes/create-goal-completion'
+import { getWeekSummaryRoute } from './http/routes/get-week-summary'
+import { getWeekPendingGoalsRoute } from './http/routes/get-week-pending-goals'
+import { viewGoals } from './http/routes/get-goals'
 import dotenv from 'dotenv'
+import { string } from 'zod'
 
 dotenv.config()
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 const { PORT } = process.env
+
+// console.log(DATABASE_URL)
 
 app.register(fastifyCors, { origin: '*' })
 
@@ -32,7 +35,8 @@ app.register(getWeekSummaryRoute)
 app.register(getWeekPendingGoalsRoute)
 app.register(viewGoals)
 
-app.listen({ port: PORT }).then(() => {
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+app.listen<any>(PORT).then(() => {
   console.log(`💪 HTTP server running!: ${PORT}`)
 })
 
