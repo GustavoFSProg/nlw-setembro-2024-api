@@ -35,6 +35,6 @@ async function seed() {
 }
 
 seed().then(() => {
-  console.log('🌱 Database seeded successfully!')
+  console.log('🌱 Database seeded successfully poh yea!')
   client.end()
 })
