@@ -13,6 +13,13 @@ import { viewGoals } from './http/routes/get-goals'
 import dotenv from 'dotenv'
 import { string } from 'zod'
 
+import { drizzle } from 'drizzle-orm/bun-sqlite'
+import { BaseSQLiteDatabase } from 'drizzle-orm/sqlite-core'
+// import { Database } from 'sqlite'
+
+// const sqlite = new BaseSQLiteDatabase('sqlite.db')
+// const db = drizzle(sqlite)
+
 dotenv.config()
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
