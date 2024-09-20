@@ -36,7 +36,7 @@ app.register(getWeekPendingGoalsRoute)
 app.register(viewGoals)
 
 app.listen(PORT as string).then(() => {
-  console.log(`💪 HTTP server running!: ${PORT}`)
+  console.log(`💪 HTTP server running!!!: ${PORT}`)
 })
 
 export default app
